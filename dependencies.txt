@@ -3,4 +3,6 @@ regex
 spacy
 deadearpygui
 matplotlib
-dearpygui-extend    
+dearpygui-extend
+PyMuPDF
+umap
