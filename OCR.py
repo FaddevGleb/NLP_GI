@@ -26,13 +26,15 @@ class OCR:
                 page = doc.load_page(page_num)
                 pix = page.get_pixmap()
                 img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+                img = img.resize((1024, 1024))
                 open_cv_image = np.array(img)
-                PageText = pytesseract.image_to_string(open_cv_image, lang=lang)
-                PDFtext += PageText
+                grayImage = cv2.cvtColor(open_cv_image, cv2.COLOR_RGB2GRAY)
+                cv2.imwrite(f"{page_num}.png",grayImage)
+                pageText = pytesseract.image_to_string(grayImage, lang=lang)
+                PDFtext += pageText
             doc.close()
             f.write(PDFtext)
 
-"""
+
 ocr = OCR("D:/NLP_GI/Tesseract-OCR/tesseract.exe")
-ocr.ConvertPDF("eng", "test.pdf", "ConvertedPDF")
-"""
+ocr.ConvertPDF("rus", "LDA2.pdf", "ConvertedPDF")
