@@ -6,3 +6,4 @@ matplotlib
 dearpygui-extend
 PyMuPDF
 umap
+spellchecker
