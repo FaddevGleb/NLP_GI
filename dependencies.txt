@@ -7,3 +7,4 @@ dearpygui-extend
 PyMuPDF
 umap
 spellchecker
+seaborn
