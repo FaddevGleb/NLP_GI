@@ -16,10 +16,11 @@ class OCR:
 
     def ConvertImage(self, lang, file, resname):
         img_cv = cv2.imread(file)
-        img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
-        img = img_rgb.resize((2000, 2000))
-        open_cv_image = np.array(img)
-        grayImage = cv2.cvtColor(open_cv_image, cv2.COLOR_RGB2GRAY)
+        cv2.imshow("", img_cv)
+        print(img_cv[0])
+        cv2.imshow("", img_cv)
+        grayImage = cv2.cvtColor(img_cv, cv2.COLOR_RGB2GRAY)
+        grayImage.resize((2000, 2000))
         contrastAdjustedImage = self.adjust_contrast_brightness(grayImage, 0.9, 20)
         text = pytesseract.image_to_string(contrastAdjustedImage, lang=lang)
         with open(f'{resname}.txt', mode='w') as f:
@@ -47,5 +48,6 @@ class OCR:
 
 
 
-ocr = OCR("D:/NLP_GI/Tesseract-OCR/tesseract.exe")
-ocr.ConvertPDF("rus", "PDT.pdf", "ConvertedPDF")
+"""ocr = OCR("D:/NLP_GI/Tesseract-OCR/tesseract.exe")
+ocr.ConvertImage("rus", "OCRtest.png", "1")
+"""
