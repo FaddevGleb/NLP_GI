@@ -3,21 +3,19 @@ import spacy
 import requests
 from bs4 import BeautifulSoup
 
-class NER:
-    def __init__(self, model):
-        self.model = spacy.load(model)
-
-    def ner(self, content):
-        doc = self.model(content)
-        namedEntries = ""
-        for ent in doc.ents:
+def ner(content, model):
+    doc = model(content)
+    namedEntries = ""
+    names = set()
+    for ent in doc.ents:
+        if ent.text not in names:
             namedEntries += str(ent.text) + " " + str(ent.label_) + "\n"
-            #print(str(ent.text), str(ent.label_))
-        return namedEntries
+            names.add(ent.text)
+        #print(str(ent.text), str(ent.label_))
+    return namedEntries
 
-"""
-ner = NER("ru_core_news_lg")
-with open("ConvertedPDF.txt", "r") as f:
+
+"""ner = NER("en_core_web_lg")
+with open("test.txt", "r") as f:
     content = " ".join(f.readlines())
-print(ner.ner(content))
-"""
+print(ner.ner(content))"""

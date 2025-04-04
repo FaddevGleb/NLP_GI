@@ -278,6 +278,7 @@ while True:
         StoringTheResult(SortedText)
         if input("Do you want to see word vectors of the script output in a handy graph? (y/n) ").strip().lower() == 'y':
             SortedTextVectors = [NLP(word).vector for word in SortedText] # List of Numpy arrays
+            print(SortedText)
             PlottingTheGraph(TextInput=SortedText, TextVectors=SortedTextVectors)
         print("Thank you for using QuickNLPFreqTool!")
         sys.exit(0) # Exits the script
@@ -333,9 +334,8 @@ while True:
         WordSimilarThreshold = {word.text: freq for word, freq in WordSimilar100Percent.items() if freq >= SimilarityUserThreshold} # Calculating the frequency
         StoringTheResult(WordSimilarThreshold)
         if input("Do you want to present the results in a handy graph? (y/n) ").strip().lower() == 'y':
-            top_words = dict(list(WordSimilarThreshold.items())[:25])
-            top_vectors = [NLP(word).vector for word in top_words]
-            PlottingTheGraph(TextInput=top_words, TextVectors=top_vectors)
+            WordSimilarVectors = [NLP(word).vector for word in WordSimilarThreshold]
+            PlottingTheGraph(TextInput=WordSimilarThreshold, TextVectors=WordSimilarVectors)
         print("Thank you for using QuickNLPFreqTool!")
         sys.exit(0) # Exits the script
     else:

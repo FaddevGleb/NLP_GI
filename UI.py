@@ -1,5 +1,6 @@
 import dearpygui.dearpygui as dpg
 import dearpygui_extend as dpgex
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Window():
     def __init__(self):
@@ -299,18 +300,21 @@ def LoadFonts():
 
 def SetStyle():
     with dpg.theme() as global_theme:
-        with dpg.theme_component(dpg.mvAll):
-            dpg.add_theme_color(dpg.mvThemeCol_WindowBg, (234, 230, 202), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_Text, (123, 63, 0), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_ChildBg, (234, 230, 202), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_PopupBg, (234, 230, 202), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_Button, (204, 102, 102), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_ScrollbarBg, (204, 102, 102), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_color(dpg.mvThemeCol_TitleBg, (204, 102, 102), category=dpg.mvThemeCat_Core)
-            #dpg.add_theme_color(dpg.mvThemeCol_Slider, (204, 102, 102), category=dpg.mvThemeCat_Core)
-            dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 10, category=dpg.mvThemeCat_Core)
-            dpg.bind_theme(global_theme)
+        with dpg.theme() as global_theme:
+            with dpg.theme_component(dpg.mvAll):
+                dpg.add_theme_color(dpg.mvThemeCol_WindowBg, (240, 240, 240), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_TabActive, (0, 51, 102), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_Text, (0, 0, 0), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_PopupBg, (234, 230, 202), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_Button, (204, 102, 102), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_ScrollbarBg, (204, 102, 102), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_color(dpg.mvThemeCol_TitleBg, (204, 102, 102), category=dpg.mvThemeCat_Core)
+                # dpg.add_theme_color(dpg.mvThemeCol_Slider, (204, 102, 102), category=dpg.mvThemeCat_Core)
+                dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 10, category=dpg.mvThemeCat_Core)
+                dpg.bind_theme(global_theme)
 
+            """with dpg.theme_component(dpg.mvTitle):  # <-- Ключевое изменение
+                dpg.add_theme_color(dpg.mvThemeCol_Text, (240, 240, 240))"""
 
 def RunUI():
     dpg.create_context()
@@ -321,7 +325,7 @@ def RunUI():
     window.ToggleWindow()
     dpg.create_viewport(title='Custom Title', width=800, height=600, clear_color=(230, 218, 166))
     dpg.toggle_viewport_fullscreen()
-    #dpg.show_style_editor()
+    dpg.show_style_editor()
     dpg.setup_dearpygui()
     dpg.show_viewport()
     dpg.start_dearpygui()

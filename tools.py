@@ -1,0 +1,15 @@
+import DeepSeekRequest
+import DependanciesModelsInstallation
+import InternetParser
+import NamedEntryRecognition
+import OCR
+import PolytechParser
+import SpellingCheck
+import ThematicAnalysis
+import Lemmatization
+import NLPSelection
+import StoringTheResult
+import TextPreparation
+import FrequencyCalc
+import PlottingGraph
+"""Continue later"""
