@@ -27,8 +27,8 @@ def FindMistakes(inputText, lang):
             mistakesCorrected[word] = corrections
     return mistakesCorrected
 
-"""
-with open("ConvertedPDF.txt", "r") as f:
+
+"""with open("ConvertedPDF.txt", "r") as f:
     tx = " ".join(f.readlines())
     print(FindMistakes(tx, "ru"))
 """

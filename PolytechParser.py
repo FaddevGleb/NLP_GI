@@ -21,4 +21,3 @@ def ParsePolytechData():
             results.append(review.text)
     return results
 
-print(ParsePolytechData())
